@@ -35,12 +35,9 @@
 ![PlanText](https://www.planttext.com/api/plantuml/png/X90x3i9034JxdC8b58YU8X8G2WgaY701Asl0Odzi7AISZO8ZSGMoV490I5Ih7StORtmzNpOicYPGqB4cMn9aZBk01hOkm0pjeMWg8PCaEGRXaZrQWONnsZL47-BJs9Vw-LTcb3wKk59JAP1ZOwWrhqZsJi4Wun3bZBohM60CAsJTFZcNXzeFaqTybBu6Jc0TsIk1gL8ix2ngMDgMts3ymI1M-Pmw_86J1tTYHNVeVhvR-6uJsQtgoFykUoVxs7DdjnnCDwOWgVsFUj--vw5QUt83003__mC0)
 ## *II. Mô phỏng Java cho ca sử dụng Maintain Timecard* 
 
-    ```markdown
+```markdown
 
-    ``` java
-
-
-# Viết code Java mô phỏng ca sử dụng Maintain Timecard.
+``` java
 
 class Timecard {
 
