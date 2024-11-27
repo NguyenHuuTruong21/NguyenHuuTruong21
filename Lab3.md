@@ -13,13 +13,23 @@
     Analysis Class      |  Design Element
     ____________________|______________________
     Employee            ||  EmployeeDTO, EmployeeService
-    Payroll             ||  PayrollDTO, PayrollService 
-    Payment             ||  PaymentProcessor, PaymentDTO
+    PayrollSystem       ||  Controller Class
+    PrintService        ||  Service Class
+    HRManager           ||  HRManager
     Report              ||  ReportGenerator, ReportDTO 
-    Project             ||  ProjectDTO, ProjectService
 
-    Biểu đồ ngữ cảnh của hệ thống con ProjectManagementDatabase subsystems
-    
+    Ánh xạ các phần tử thiết kế vào các gói
+
+     Design Element     |  "Owning" Package
+    ____________________|______________________
+    Employee            ||  Applications: Employee Activities
+    PayrollSystem       ||  Middleware::Security:GUI Framework
+    PrintService        ||  Service Class
+    HRManager           ||  Applications: HRManager
+
+
+##
+    Biểu đồ ngữ cảnh của hệ thống con ProjectManagementDatabase subsystems    
 ![PlantText](https://www.planttext.com/api/plantuml/png/Z95F3i5G48VtSuhnLYnSm4883H94YWECTZIbVUMzqQGH9xDm95TGKV-JChl9z_jzivZpyTIoGaPsSGGLdvUXPdITpgmzxWqTz2Ao5c13tfe2HZKnoOezmH7fV8zP2tP9Q46M5Uu1ytcMozDaiU1FVAU5wZO1In6yuchj1LbA-PiTu00meSmaKJJDh72CzNgpv5e3bSlR7LkvXt2Wbuc2juhvRPblV19-IAv8GT_zk--oc93JJmEqMFlvWou0003__mC0)
 
 
@@ -27,9 +37,18 @@
     
     Analysis Class      |  Design Element
     ____________________|______________________
-    Employee            ||  EmployeeDTO, EmployeeService
-    Payroll             ||
-    Payment             ||
-    Report              ||
-    Project             ||
-          
+    Project Data        ||   Project Data
+    PayrollSystem       ||  PayrollSystem
+    Project Manager     ||  Project Manager
+    HRManager           ||  HRManager
+    Report              ||  Report
+
+
+    Ánh xạ các phần tử thiết kế vào các gói
+
+     Design Element     |  "Owning" Package
+    ____________________|______________________
+    Project Data        ||  Middleware::Security:GUI Framework
+    PayrollSystem       ||  Applications: PayrollSystem
+    Project Manager     ||  Middleware::Security:GUI Framework
+    HRManager           ||  Applications: HRManager
