@@ -1,1 +1,9 @@
-![PlantText](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3XTNSavYSR62Pq1HPbv9S6fHMMPoAbSrbu92IcP1Vd69Hc90OYLKMC5A0S7HKG2gpqV8G5cUUMdvHRc99PdvUPeANBLSN2W60zNPs7ZcbQGMfIKcfzhPmMo7IWTN5fUavcBO3XObrNAGtIZ6Wkqk1ZCBYl8hAa6seohGrRL32mSkBeVKl1HWC040003__mC0)
+# Lab 3: Indentify context elements
+
+  # 1. Sybsystem context diagrams
+    
+    Hệ thông con của PrintService, ProjectManagementDatabase subsystems.
+
+    Biểu đồ ngữ cảnh của PrintService:
+    
+    ![PlantText]()
