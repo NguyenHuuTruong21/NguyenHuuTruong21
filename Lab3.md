@@ -30,7 +30,7 @@
     
     Analysis Class      |  Design Element
     ____________________|______________________
-    Project Data        ||   Project Data
+    Project Data        ||  Project Data
     PayrollSystem       ||  PayrollSystem
     Project Manager     ||  Project Manager
     HRManager           ||  HRManager
