@@ -57,3 +57,7 @@
     PayrollSystem       ||  Applications: PayrollSystem
     Project Manager     ||  Middleware::Security:GUI Framework
     HRManager           ||  Applications: HRManager
+
+# 4. Architectural layers and their dependencies
+
+![PlantText](https://www.planttext.com/api/plantuml/png/R59BQiCm4Dth54Fs8VikIam_YI41az1LoMAGXrH4bined61AJzP5ZzGhL8qLQhlMRdWVlJVCz-VNCWYoD9LLDUeJ7WbcMLrRer6CTm4ss1BFu5r1VAzFLMrzImIP5dCsOYWSEcIzswABSavpWIrxQ_Tj4AeEwaFz-MzDMLgw8DF8VK-wOIDjibYzvF3CMD75ysbeiIS-6ptM5soS92XvxAZsBB0YHupY-MepMGFcy_jU1BY3hCWNMIDlv2IjG_LgTlnXnYYAyuvSIJ7AKOssCF55j5zaMbC8yE2THBBg4QxyGQkekNNFtTdVOerYJEeUKH3Mw4hRHHl0LyM_PKLL6WWwCAXbRFTxBZy0003__mC0)
