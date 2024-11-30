@@ -1,1 +1,16 @@
+ Tìm hiểu cách thức lập trình đa luồng:
 
+  Định nghĩa và ưu điểm của luồng:
+- Luồng là đơn vị thực thi nhỏ hơn tiến trình.
+- Một tiến trình có thể chứa nhiều luồng, chia sẻ bộ nhớ và tài nguyên chung.
+
+  Trạng thái và vòng đời của luồng:
+- Vòng đời luồng bao gồm các trạng thái: Mới, Sẵn sàng, Đang chạy, Đợi, và Kết thúc.
+
+  Các thao tác trên luồng:
+- Tạo, hủy, và đồng bộ hóa giữa các luồng.
+
+  Mô hình luồng:
+- Luồng cấp người dùng (User-level Threads): Luồng được quản lý bởi thư viện ứng dụng, không cần sự hỗ trợ trực tiếp từ hệ điều hành.
+- Luồng mức nhân (Kernel-level Threads): Quản lý trực tiếp bởi hệ điều hành.
+- Tích hợp cả hai mô hình.
