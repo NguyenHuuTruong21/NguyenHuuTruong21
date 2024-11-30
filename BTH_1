@@ -14,3 +14,107 @@
 - Luồng cấp người dùng (User-level Threads): Luồng được quản lý bởi thư viện ứng dụng, không cần sự hỗ trợ trực tiếp từ hệ điều hành.
 - Luồng mức nhân (Kernel-level Threads): Quản lý trực tiếp bởi hệ điều hành.
 - Tích hợp cả hai mô hình.
+
+# Viết chương trình sắp xếp trộn mảng n > 1000000000 ( vì lí do phần tử quá lớn em cho pt n > 1000000
+
+ #include <iostream>
+ #include <vector>
+ #include <thread>
+ #include <algorithm>
+ #include <chrono>
+ #include <random>
+ #include <mutex>
+ 
+ // Hàm sắp xếp trộn (merge sort) cơ bản
+ void merge(std::vector<int>& array, int left, int mid, int right) {
+     int n1 = mid - left + 1;
+     int n2 = right - mid;
+ 
+     std::vector<int> L(array.begin() + left, array.begin() + left + n1);
+     std::vector<int> R(array.begin() + mid + 1, array.begin() + mid + 1 + n2);
+ 
+     int i = 0, j = 0, k = left;
+     while (i < n1 && j < n2) {
+         if (L[i] <= R[j])
+             array[k++] = L[i++];
+         else
+             array[k++] = R[j++];
+     }
+ 
+     while (i < n1)
+         array[k++] = L[i++];
+     while (j < n2)
+         array[k++] = R[j++];
+ }
+ 
+ void mergeSort(std::vector<int>& array, int left, int right) {
+     if (left < right) {
+         int mid = left + (right - left) / 2;
+         mergeSort(array, left, mid);
+         mergeSort(array, mid + 1, right);
+         merge(array, left, mid, right);
+     }
+ }
+ 
+ // Hàm xử lý sắp xếp trộn từng phần trong luồng
+ void parallelMergeSort(std::vector<int>& array, int left, int right) {
+     mergeSort(array, left, right);
+ }
+ 
+ int main() {
+     const size_t NUM_ELEMENTS = 1'000'000; // Số phần tử trong mảng
+     const unsigned int NUM_THREADS = std::thread::hardware_concurrency(); // Số luồng dựa trên CPU
+     std::cout << "Number of threads: " << NUM_THREADS << std::endl;
+ 
+     // Tạo mảng ngẫu nhiên
+     std::vector<int> data(NUM_ELEMENTS);
+     std::mt19937 rng(std::random_device{}());
+     std::uniform_int_distribution<int> dist(0, 1'000'000);
+     for (auto& x : data) x = dist(rng);
+ 
+     // Mảng sao chép để so sánh
+     std::vector<int> singleThreadData = data;
+ 
+     // --- Sắp xếp một luồng ---
+     auto startSingle = std::chrono::high_resolution_clock::now();
+     mergeSort(singleThreadData, 0, NUM_ELEMENTS - 1);
+     auto endSingle = std::chrono::high_resolution_clock::now();
+     std::chrono::duration<double> singleDuration = endSingle - startSingle;
+     std::cout << "Single-threaded duration: " << singleDuration.count() << " seconds" << std::endl;
+ 
+     // --- Sắp xếp đa luồng ---
+     auto startMulti = std::chrono::high_resolution_clock::now();
+ 
+     std::vector<std::thread> threads;
+     std::vector<int> indices(NUM_THREADS + 1);
+ 
+     // Chia mảng thành các phần
+     for (unsigned int i = 0; i <= NUM_THREADS; ++i) {
+         indices[i] = i * (NUM_ELEMENTS / NUM_THREADS);
+     }
+     indices[NUM_THREADS] = NUM_ELEMENTS; // Đảm bảo phần cuối cùng
+ 
+     // Tạo các luồng xử lý sắp xếp từng phần
+     for (unsigned int i = 0; i < NUM_THREADS; ++i) {
+         threads.emplace_back(parallelMergeSort, std::ref(data), indices[i], indices[i + 1] - 1);
+     }
+ 
+     // Đợi các luồng hoàn tất
+     for (auto& thread : threads) {
+         thread.join();
+     }
+ 
+     // Trộn các phần đã được sắp xếp
+     for (unsigned int i = 1; i < NUM_THREADS; ++i) {
+         merge(data, 0, indices[i] - 1, indices[i + 1] - 1);
+     }
+ 
+     auto endMulti = std::chrono::high_resolution_clock::now();
+     std::chrono::duration<double> multiDuration = endMulti - startMulti;
+     std::cout << "Multi-threaded duration: " << multiDuration.count() << " seconds" << std::endl;
+ 
+     // So sánh thời gian
+     std::cout << "Speedup: " << singleDuration.count() / multiDuration.count() << "x" << std::endl;
+ 
+     return 0;
+ }
