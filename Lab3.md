@@ -104,7 +104,7 @@ Ghi log lỗi và hiển thị thông báo cho người dùng.
     class BankStatementCSVParser implements BankStatementParser 
     {
         private static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
+    }
     @Override
     public BankTransaction parseFrom(String line) 
     {
