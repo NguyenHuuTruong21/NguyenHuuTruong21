@@ -28,14 +28,14 @@ Mô tả công việc
 
 #1. Mô tả tóm tắt bài toán
 
-- Sự cần thiết, lợi ích khi giải quyết bài toán
+Sự cần thiết, lợi ích khi giải quyết bài toán
 
   - Bài toán đặt ra yêu cầu của một môi trường kỹ thuật số (iLearn) nhằm thay thế hệ thống Glow hiện tại, vốn đã trở nên lỗi thời và không đáp ứng được nhu cầu của người dùng. 
     Glow là một hệ thống khép kín, không cho phép người dùng tích hợp các ứng dụng mới, dẫn đến việc người dùng chuyển sang các giải pháp miễn phí và linh hoạt hơn. Việc phát 
     triển iLearn không chỉ giúp cải thiện trải nghiệm học tập cho học sinh từ 4 đến 18 tuổi mà còn tạo ra một nền tảng mở, cho phép người dùng tùy chỉnh và tích hợp các dịch vụ mới, 
     từ đó nâng cao tính linh hoạt và khả năng tương tác của hệ thống.
 
-- Các yêu cầu chức năng
+Các yêu cầu chức năng
 
  + Dịch vụ tiện ích: Cung cấp các chức năng cơ bản nó không phụ thuộc vào ứng dụng, phục vụ nhu cầu cho các dịch vụ trong hệ thống.
  + Dịch vụ ứng dụng: Cung cấp các ứng dụng cụ thể email, hội nghị trực tuyến, chia sẻ ảnh, và truy cập nội dung giáo dục như phim khoa
@@ -45,10 +45,160 @@ Mô tả công việc
  + Tích hợp với các hệ thống quản lý mạng và quản lý hành chính: Đảm bảo rằng iLearn có thể tương tác với hệ thống đang có, phù hợp chính sách
    cho từng khu vực.
 
-- Các yêu cầu phi chức năng
+Các yêu cầu phi chức năng
 
  + Tính mở rộng: Hệ thống phải cho phép người dùng dễ dàng tích hợp và thay thế các dịch vụ, đảm bảo tính linh hoạt trong việc phát triển và mở rộng.
  + Tính bảo mật: Đảm bảo rằng các dịch vụ và dữ liệu của người dùng được bảo vệ an toàn, đặc biệt là trong môi trường học đường.
  + Tính tương tác: Hệ thống phải hỗ trợ việc tương tác giữa các dịch vụ và người dùng, tạo ra một trải nghiệm học tập tích cực và hợp tác.
  + Tính khả dụng: Hệ thống cần phải dễ sử dụng và truy cập cho tất cả người dùng, bao gồm học sinh, giáo viên và phụ huynh, bất kể trình độ kỹ thuật của họ.
 
+
+#2. Phân tích các ca sử dụng
+
+Kiến trúc đề xuất
+
+  Kiến trúc của hệ thống iLearn được thiết kế theo mô hình dịch vụ, cho phép tích hợp và thay thế các thành phần một cách linh hoạt.
+
+  Thành phần kiến trúc: 
+      + Người dùng: Học sinh, giáo viên, phụ huynh.
+      + Cổng dịch vụ: Nơi người dùng truy cập và sử dụng dịch vụ.
+      + Quản lý dịch vụ: Điều phối các yêu cầu từ người dùng và đảm bảo tích hợp giữa các dịch vụ.
+      + Dịch vụ bên ngoài: Các dịch vụ bên thứ ba như email, chia sẻ ảnh, tài liệu học tập.
+      + Cơ sở dữ liệu: Lưu trữ thông tin người dùng, quyền truy cập, cấu hình dịch vụ và tài liệu học tập.
+
+Các cơ chế phân tích
+
+ + Phân tích yêu cầu: Xác định các chức năng và phi chức năng của hệ thống thông qua các cuộc thảo luận.
+ + Cơ chế bảo mật:  Kiểm soát truy cập, phân quyền người dùng, mã hóa dữ liệu.
+ + Tích hợp dịch vụ: Dùng API và giao diện dịch vụ chuẩn hoá để tích hợp các ứng dụng bên ngoài.
+ + Cấu hình động: Cho phép thay đổi các dịch vụ và giao diện người dùng khi được truy cập tùy theo vai trò (học sinh, giáo viên, phụ huynh).
+ + Quá trình giám sát và quản lý: Theo dõi hoạt động của các dịch vụ, đảm bảo hiệu suất ổn định
+ + Xữ lý lỗi: Phát hiện và xử lý lỗi dịch vụ mà không làm gián đoạn trong quá trình hoạt động hệ thống.
+      
+Kết quả phân tích từng ca sử dụng
+
+ Kết quả phân tích ca sử dụng 1:
+  - Truy cập nội dung học tập
+      + Mô tả: Học sinh có thể truy cập, tìm nguồn tài liệu học tập như sách điện tử, video giáo dục hoặc tài liệu khóa học. 
+      + Đối tượng: Học sinh.
+      + Luồng chính:
+            1. Học sinh cần đăng nhập vào hệ thống.
+            2. Học sinh chọn một chủ đề và khoá học cụ thể.
+            3. Hệ thống kiểm tra các quyền truy cập của học sinh.
+            4. Học sinh xem các video hoặc tải các tập tài liệu.
+      + Yêu cầu phi chức năng: Tài liệu tải xuống nhanh chóng, an toàn và có thể truy cập từ nhiều thiết bị.
+      + Liên hệ lớp phân tích:
+           - Lớp dịch vụ ứng dụng: Cung cấp tài liệu học tập.
+           - Lớp dịch vụ cấu hình: Quản lý quyền truy cập.
+           - Lớp dịch vụ tiện ích: Xác thực và quản lý phiên làm việc.
+
+ Kết quả phân tích ca sử dụng 2:
+  - Tổ chức lớp học trực tuyến
+      + Mô tả: Giáo viên tổ chức lớp học trực tuyến qua hội nghị truyền hình.
+      + Đối tượng: Giáo viên.
+      + Luồng chính: 
+            1. Giáo viên đăng nhập hệ thống.
+            2. Giáo viên tạo phòng trực tuyến.
+            3. Hệ thống tạo liên kết tham gia lớp học và gửi đến học sinh.
+            4. Học sinh tham gia lớp học trực tuyến.
+      + Yêu cầu phi chức năng: Đường truyền ổn định, hỗ trợ nhiều người tham gia đồng thời, bảo mật thông tin buổi học.
+      + Liên hệ lớp phân tích:
+            Lớp dịch vụ ứng dụng: Dịch vụ hội nghị trực tuyến.
+            Lớp dịch vụ cấu hình: Phân quyền truy cập buổi học.
+            Lớp dịch vụ tiện ích: Quản lý phiên đăng nhập.
+ 
+ Kết quả phân tích ca sử dụng 3: 
+ - Quản lý cấu hình người dùng
+      + Mô tả: Quản trị viên hoặc giáo viên thiết lập cấu hình tài khoản người dùng.
+      + Đối tượng: Quản trị viên, giáo viên
+      + Luồng chính:
+            1. Quản trị viên/giáo viên đăng nhập vào hệ thống.
+            2. Chọn mục cấu hình người dùng.
+            3. Thay đổi thông tin tài khoản, quyền truy cập và các cài đặt khác.
+            4. Lưu cấu hình.
+      + Yêu cầu phi chức năng: Thao tác cấu hình phải nhanh chóng, dễ hiểu và an toàn.
+      + Liên hệ lớp phân tích:
+            Lớp dịch vụ cấu hình: Quản lý cấu hình tài khoản và quyền truy cập.
+            Lớp dịch vụ tiện ích: Quản lý xác thực và quyền hạn người dùng.
+
+
+ Kết quả phân tích ca sử dụng 4:
+ - Gửi và nhận thông báo
+      + Mô tả: Giáo viên gửi thông báo quan trọng đến học sinh và phụ huynh.
+      + Đối tượng: Giáo viên, Học sinh, Phụ huynh
+      + Luồng chính:
+            1. Giáo viên đăng nhập vào hệ thống.
+            2. Chọn chức năng gửi thông báo.
+            3. Soạn thông báo và chọn đối tượng nhận (học sinh, phụ huynh).
+            4. Hệ thống gửi thông báo qua email hoặc giao diện người dùng.
+      + Yêu cầu phi chức năng: Thông báo phải được gửi nhanh chóng, dễ dàng theo dõi và bảo mật.
+      + Liên hệ lớp phân tích:
+            Lớp dịch vụ ứng dụng: Dịch vụ gửi thông báo.
+            Lớp dịch vụ tiện ích: Quản lý xác thực người gửi.
+            Lớp dịch vụ cấu hình: Xác định quyền hạn gửi thông báo.
+
+ Kết quả phân tích ca sử dụng 5: 
+ - Đánh giá và chấm điểm học sinh
+      + Mô tả: Giáo viên chấm điểm và gửi phản hồi cho học sinh sau khi hoàn thành bài tập hoặc kỳ thi.
+      +Đối tượng: Giáo viên, Học sinh
+      + Luồng chính:
+            1. Giáo viên đăng nhập vào hệ thống.
+            2. Chọn danh sách học sinh cần chấm điểm.
+            3. Nhập điểm số và phản hồi.
+            4. Học sinh nhận kết quả qua hệ thống.
+      + Yêu cầu phi chức năng: Dữ liệu phải được lưu trữ an toàn và truy cập dễ dàng.
+      + Liên hệ lớp phân tích:
+            Lớp dịch vụ ứng dụng: Dịch vụ đánh giá và phản hồi.
+            Lớp dịch vụ cấu hình: Quyền hạn xem kết quả của học sinh.
+            Lớp dịch vụ tiện ích: Lưu trữ và bảo mật dữ liệu chấm điểm.
+
+
+ Kết quả phân tích ca sử dụng 6: 
+ - Quản lý tài khoản người dùng
+      + Mô tả: Quản trị viên quản lý tài khoản người dùng (tạo, xóa, cập nhật thông tin).
+      + Đối tượng: Quản trị viên
+      + Luồng chính:
+      + Quản trị viên đăng nhập vào hệ thống.
+            1. Chọn mục quản lý tài khoản.
+            2. Tạo, xóa hoặc chỉnh sửa thông tin người dùng.
+            3. Lưu thay đổi và cập nhật hệ thống.
+      + Yêu cầu phi chức năng: Giao diện thân thiện, thao tác nhanh chóng và bảo mật thông tin người dùng.
+      + Liên hệ lớp phân tích:
+            Lớp dịch vụ cấu hình: Dịch vụ quản lý tài khoản người dùng.
+            Lớp dịch vụ tiện ích: Xác thực và bảo mật thông tin.
+
+#3. Xác định các phần tử thiết kế
+
+AuthenticationService: Xác thực người dùng (học sinh, giáo viên, quản trị viên).
+AuthorizationService: Phân quyền và kiểm soát truy cập.
+LoggingService: Ghi lại hoạt động của hệ thống và người dùng.
+NotificationService: Gửi thông báo qua email hoặc tin nhắn.
+SessionManagementService: Quản lý phiên làm việc của người dùng.
+
+ContentManagementService: Quản lý và phân phối nội dung học tập.
+OnlineClassroomService: Tạo và quản lý lớp học trực tuyến.
+AssessmentService: Chấm điểm và phản hồi kết quả học tập.
+CommunicationService: Hỗ trợ hội thoại, email và chia sẻ tài liệu giữa người dùng.
+ResourceSharingService: Cho phép chia sẻ tài nguyên học tập (video, tài liệu, bài giảng).
+
+UserManagementService: Quản lý người dùng (tạo, chỉnh sửa, xóa tài khoản).
+RoleManagementService: Quản lý vai trò và quyền hạn của người dùng.
+ServiceConfigurationService: Cấu hình dịch vụ và quyền truy cập.
+SystemMonitoringService: Theo dõi và giám sát hiệu suất hệ thống.
+
+Tổ chức các phần tử thiết kế
+Các phần tử thiết kế trong iLearn được tổ chức theo cấu trúc 3 lớp dịch vụ, cụ thể như sau:
+
+Lớp Giao diện người dùng (UI Layer)
+
+Cung cấp giao diện trực quan cho học sinh, giáo viên và quản trị viên.
+Bao gồm các thành phần như: Trang chính, Trang lớp học, Trang cấu hình tài khoản.
+Lớp Dịch vụ (Service Layer)
+
+Xử lý nghiệp vụ và logic của hệ thống.
+Tích hợp các dịch vụ tiện ích, dịch vụ ứng dụng và dịch vụ cấu hình.
+Dùng API để giao tiếp giữa các dịch vụ.
+Lớp Dữ liệu (Data Layer)
+
+Lưu trữ dữ liệu người dùng, tài liệu học tập, thông tin lớp học và cấu hình hệ thống.
+Bao gồm các thành phần như: Cơ sở dữ liệu SQL, Lưu trữ tệp (file storage).
