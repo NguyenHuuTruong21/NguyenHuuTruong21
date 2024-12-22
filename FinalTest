@@ -35,7 +35,7 @@ Mô tả công việc
     triển iLearn không chỉ giúp cải thiện trải nghiệm học tập cho học sinh từ 4 đến 18 tuổi mà còn tạo ra một nền tảng mở, cho phép người dùng tùy chỉnh và tích hợp các dịch vụ mới, 
     từ đó nâng cao tính linh hoạt và khả năng tương tác của hệ thống.
 
-- Các chức năng yêu cầu
+- Các yêu cầu chức năng
 
  + Dịch vụ tiện ích: Cung cấp các chức năng cơ bản nó không phụ thuộc vào ứng dụng, phục vụ nhu cầu cho các dịch vụ trong hệ thống.
  + Dịch vụ ứng dụng: Cung cấp các ứng dụng cụ thể email, hội nghị trực tuyến, chia sẻ ảnh, và truy cập nội dung giáo dục như phim khoa
@@ -46,4 +46,9 @@ Mô tả công việc
    cho từng khu vực.
 
 - Các yêu cầu phi chức năng
+
+ + Tính mở rộng: Hệ thống phải cho phép người dùng dễ dàng tích hợp và thay thế các dịch vụ, đảm bảo tính linh hoạt trong việc phát triển và mở rộng.
+ + Tính bảo mật: Đảm bảo rằng các dịch vụ và dữ liệu của người dùng được bảo vệ an toàn, đặc biệt là trong môi trường học đường.
+ + Tính tương tác: Hệ thống phải hỗ trợ việc tương tác giữa các dịch vụ và người dùng, tạo ra một trải nghiệm học tập tích cực và hợp tác.
+ + Tính khả dụng: Hệ thống cần phải dễ sử dụng và truy cập cho tất cả người dùng, bao gồm học sinh, giáo viên và phụ huynh, bất kể trình độ kỹ thuật của họ.
 
