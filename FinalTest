@@ -34,3 +34,16 @@ Mô tả công việc
     Glow là một hệ thống khép kín, không cho phép người dùng tích hợp các ứng dụng mới, dẫn đến việc người dùng chuyển sang các giải pháp miễn phí và linh hoạt hơn. Việc phát 
     triển iLearn không chỉ giúp cải thiện trải nghiệm học tập cho học sinh từ 4 đến 18 tuổi mà còn tạo ra một nền tảng mở, cho phép người dùng tùy chỉnh và tích hợp các dịch vụ mới, 
     từ đó nâng cao tính linh hoạt và khả năng tương tác của hệ thống.
+
+- Các chức năng yêu cầu
+
+ + Dịch vụ tiện ích: Cung cấp các chức năng cơ bản nó không phụ thuộc vào ứng dụng, phục vụ nhu cầu cho các dịch vụ trong hệ thống.
+ + Dịch vụ ứng dụng: Cung cấp các ứng dụng cụ thể email, hội nghị trực tuyến, chia sẻ ảnh, và truy cập nội dung giáo dục như phim khoa
+   học hoặc tài nguyên lịch sử.
+ + Dịch vụ cấu hình: Cho phép tuỳ chỉnh môi trường học tập với một bộ dịch vụ cụ thể, xác định cách thức chia sẻ các dịch vụ giữa học sinh,
+   giáo viên và phụ huynh.
+ + Tích hợp với các hệ thống quản lý mạng và quản lý hành chính: Đảm bảo rằng iLearn có thể tương tác với hệ thống đang có, phù hợp chính sách
+   cho từng khu vực.
+
+- Các yêu cầu phi chức năng
+
